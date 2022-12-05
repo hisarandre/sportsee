@@ -3,7 +3,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 function Linechart({ sessions }) {
   const data = [];
-  var days = ["M", "T", "W", "T", "F", "S", "S"];
+  var days = ["L", "M", "M", "J", "V", "S", "D"];
 
   for (var day = 0; day < sessions.length; day++) {
     data.push({
