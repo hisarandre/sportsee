@@ -1,0 +1,27 @@
+.verticalNav {
+  width: 100px;
+  height: 100vh;
+  background-color: $clr-primary;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 19;
+
+  &__links {
+    width: 54px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.copyright {
+  font-size: 12px;
+  position: absolute;
+  bottom: 100px;
+  white-space: nowrap;
+  transform: rotate(-90deg);
+}

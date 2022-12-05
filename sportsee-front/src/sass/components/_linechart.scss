@@ -1,0 +1,27 @@
+.linechart {
+  &__container {
+    width: 31%;
+    height: 220px;
+    margin-top: 20px;
+    background: $clr-secondary;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__title {
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 150%;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+  }
+
+  &__tooltip {
+    background-color: white;
+    line-height: 180%;
+    font-size: 10px;
+    padding: 10px;
+  }
+}

@@ -1,0 +1,23 @@
+.barchart {
+  &__container {
+    height: 300px;
+    background: $clr-light-grey-02;
+    border-radius: 5px;
+    padding: 30px;
+  }
+  &__title {
+    margin-bottom: -20px;
+  }
+
+  &__tooltip {
+    background-color: $clr-secondary;
+    color: white;
+    line-height: 180%;
+    font-size: 10px;
+    padding: 10px;
+  }
+
+  &__legend {
+    color: $clr-light-grey-01;
+  }
+}

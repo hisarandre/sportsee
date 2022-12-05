@@ -1,0 +1,24 @@
+.piechart {
+  &__container {
+    width: 31%;
+    height: 220px;
+    margin-top: 20px;
+    padding: 14px;
+    background: $clr-light-grey-02;
+    border-radius: 5px;
+  }
+
+  &__legend {
+    text-align: center;
+  }
+
+  &__score {
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  &__goal {
+    color: $clr-light-grey-01;
+    margin: 0 50px;
+  }
+}
