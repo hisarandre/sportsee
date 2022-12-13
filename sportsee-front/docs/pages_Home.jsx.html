@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: pages/Home.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,50 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: pages/Home.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import ApiButton from "../components/ApiButton";
+import { NavLink } from "react-router-dom";
 
+/**
+ * Show home page where you can choose if you want to connect as Cecilia or Karl
+ *
+ */
 
-    <h3> </h3>
+function Home() {
+  return (
+    &lt;div className="home-container">
+      &lt;section className="usercards">
+        &lt;NavLink to={"/user/12"}>
+          &lt;div className="usercards__card">
+            🙎‍♂️ &lt;br />
+            Karl
+          &lt;/div>
+        &lt;/NavLink>
+        &lt;NavLink to={"/user/18"}>
+          &lt;div className="usercards__card">
+            🙎‍♀️ &lt;br />
+            Cecilia
+          &lt;/div>
+        &lt;/NavLink>
+      &lt;/section>
+      &lt;ApiButton />
+    &lt;/div>
+  );
+}
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default Home;
+</code></pre>
+        </article>
+    </section>
 
 
 

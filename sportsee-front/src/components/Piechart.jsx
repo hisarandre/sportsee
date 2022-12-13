@@ -29,6 +29,7 @@ function Piechart() {
   return (
     <div className="piechart__container">
       <p className="piechart__title">Score</p>
+      <div className="piechart__circle"></div>
 
       <ResponsiveContainer>
         <RadialBarChart
@@ -41,7 +42,7 @@ function Piechart() {
           data={data}
           className="piechart"
         >
-          <RadialBar minAngle={1} dataKey="value" />
+          <RadialBar background={{ fill: "#fbfbfb" }} minAngle={1} dataKey="value" cornerRadius="50%" />
           <Legend verticalAlign="middle" align="center" content={CustomLabel} />
         </RadialBarChart>
       </ResponsiveContainer>

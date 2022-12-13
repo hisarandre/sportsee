@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: services/useActivity.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,55 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: services/useActivity.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useContext } from "react";
+import PropTypes from "prop-types";
+import { useFetch } from "./useFetch";
+import { Activity } from "../models/Activity";
+import { ApiContext } from "./ApiProvider";
 
+/**
+ * Fetch the current user activity
+ * from api or mocked data
+ *
+ * @param { String } id
+ * @return { Object }
+ * @param { Number } activity.id
+ * @param { Array } activity.sessions
+ * @param { Date } activity.sessions[].day
+ * @param { Number } activity.sessions[].kilogram
+ * @param { Number } activity.sessions[].calories
+ */
 
-    <h3> </h3>
+function useActivity(id) {
+  const { ApiData } = useContext(ApiContext);
+  const url = ApiData === "api" ? `http://localhost:3000/user/${id}/activity` : "../data/mockedActivity.json";
+  const data = useFetch(url);
 
+  if (data) {
+    const userById = ApiData === "api" ? data.data : data.userActivities.find((obj) => obj.userId === parseInt(id));
+    const activity = new Activity(userById);
 
+    return activity;
+  }
+}
 
+export default useActivity;
 
-
-
-
-
-
-
-    
-
-
-
-
-
+useActivity.propTypes = {
+  id: PropTypes.string,
+};
+</code></pre>
+        </article>
+    </section>
 
 
 

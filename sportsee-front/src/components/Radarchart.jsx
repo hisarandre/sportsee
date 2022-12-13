@@ -15,7 +15,7 @@ function Radarchart() {
   return performance ? (
     <div className="radarchart__container">
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart outerRadius={68} cx="50%" cy="50%" data={performance.data}>
+        <RadarChart outerRadius={window.innerWidth > 1340 ? "70%" : "60%"} cx="50%" cy="50%" data={performance.data}>
           <PolarGrid />
           <PolarAngleAxis
             dataKey="kind"

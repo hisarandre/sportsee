@@ -57,7 +57,7 @@ function Linechart() {
     <div className="linechart__container">
       <p className="linechart__title">Durée moyenne des sessions</p>
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data} margin={{ top: 0, right: 0, left: -30, bottom: 10 }}>
+        <LineChart data={data} margin={{ top: 0, right: 0, left: window.innerWidth > 1340 ? -30 : -24, bottom: 10 }}>
           <CartesianGrid stroke="red" strokeDasharray="3 3" />
           <XAxis
             dataKey="day"
@@ -65,7 +65,7 @@ function Linechart() {
             axisLine={false}
             tickLine={false}
             tick={{
-              dx: 20,
+              dx: window.innerWidth > 1340 ? 20 : 12,
               fontSize: 12,
               fontWeight: 500,
             }}

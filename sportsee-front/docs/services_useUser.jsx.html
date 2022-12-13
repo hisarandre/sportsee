@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: services/useUser.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,57 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: services/useUser.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useContext } from "react";
+import PropTypes from "prop-types";
+import { useFetch } from "./useFetch";
+import { User } from "../models/User";
+import { ApiContext } from "./ApiProvider";
 
+/**
+ * Fetch the current user info
+ * from api or mocked data
+ *
+ * @param { String } id
+ * @return { Object }
+ * @param { Number } user.id
+ * @param { Object } user.keyData
+ * @param { Number } user.keyData.calorieCount
+ * @param { Number } user.keyData.proteinCount
+ * @param { Number } user.keyData.carbohydrateCount
+ * @param { Number } user.keyData.lipidCount
+ * @param { Number } user.todayScore
+ * @param { Object } user.userInfo
+ * @param { string } user.userInfo.firstName
+ * @param { string } user.userInfo.lastName
+ */
+export function useUser(id) {
+  const { ApiData } = useContext(ApiContext);
+  const url = ApiData === "api" ? `http://localhost:3000/user/${id}` : "../data/mockedUser.json";
+  const data = useFetch(url);
 
-    <h3> </h3>
+  if (data) {
+    const userById = ApiData === "api" ? data.data : data.userMainData.find((obj) => obj.id === parseInt(id));
+    const user = new User(userById);
 
+    return user;
+  }
+}
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+useUser.propTypes = {
+  id: PropTypes.string,
+};
+</code></pre>
+        </article>
+    </section>
 
 
 

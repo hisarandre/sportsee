@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: components/ApiButton.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,39 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: components/ApiButton.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useContext } from "react";
+import { ApiContext } from "../services/ApiProvider";
 
+/**
+ * Toggle button to switch data from mock to api
+ * @returns {React.ReactElement} A button
+ */
 
-    <h3> </h3>
+function ApiButton() {
+  const { ApiData, toggleApi } = useContext(ApiContext);
 
+  return (
+    &lt;div className="button-container">
+      &lt;input type="checkbox" id="switch" defaultChecked={ApiData === "api" ? true : false} onClick={() => toggleApi()} />
+      &lt;label htmlFor="switch">Toggle&lt;/label>
+      Data mode : {ApiData === "api" ? "api" : "mocked"}
+    &lt;/div>
+  );
+}
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default ApiButton;
+</code></pre>
+        </article>
+    </section>
 
 
 
