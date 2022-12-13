@@ -1,26 +1,36 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import { useAverageSession } from "../services/useAverageSession";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Rectangle } from "recharts";
 
-function Linechart({ sessions }) {
+/**
+ * Return the user average session of the week in a linechart
+ * @returns {React.ReactElement} A component
+ */
+
+function Linechart() {
+  const { id } = useParams();
+  let averageSession = useAverageSession(id);
+
   const data = [];
   var days = ["L", "M", "M", "J", "V", "S", "D"];
 
-  for (var day = 0; day < sessions.length; day++) {
+  for (var day = 0; day < averageSession?.sessions.length; day++) {
     data.push({
       day: days[day],
-      sessionLength: sessions[day].sessionLength,
+      sessionLength: averageSession?.sessions[day].sessionLength,
     });
   }
 
   //add the day before
   data.unshift({
     day: 1,
-    sessionLength: sessions[0].sessionLength - 10,
+    sessionLength: averageSession?.sessions[0].sessionLength - 10,
   });
   //add the day after
   data.push({
     day: 8,
-    sessionLength: sessions[6].sessionLength + 10,
+    sessionLength: averageSession?.sessions[6].sessionLength + 10,
   });
 
   const CustomTooltip = ({ active, payload, label }) => {

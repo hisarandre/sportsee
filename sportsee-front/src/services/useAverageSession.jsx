@@ -1,17 +1,34 @@
+import { useContext } from "react";
+import PropTypes from "prop-types";
 import { useFetch } from "./useFetch";
 import { AverageSession } from "../models/AverageSession";
+import { ApiContext } from "./ApiProvider";
 
-const url = "../data/mockedSession.json";
+/**
+ * Fetch the current user average session
+ * from api or mocked data
+ *
+ * @param { String } id
+ * @return { Object }
+ * @param { Number } AverageSession.id
+ * @param { Array } AverageSession.sessions
+ * @param { Number } AverageSession.sessions[].day
+ * @param { Number } AverageSession.sessions[].sessionLength
+ */
 
 export function useAverageSession(id) {
-  const { error, isLoading, data } = useFetch(url);
+  const { ApiData } = useContext(ApiContext);
+  const url = ApiData === "api" ? `http://localhost:3000/user/${id}/average-sessions` : "../data/mockedSession.json";
+  const data = useFetch(url);
 
-  if (error) return console.log("there is an error");
-  if (isLoading) return console.log("It's loading");
-  if (!error && !isLoading && data) {
-    const userById = data.userAverageSession.find((obj) => obj.userId === parseInt(id));
+  if (data) {
+    const userById = ApiData === "api" ? data.data : data.userAverageSession.find((obj) => obj.userId === parseInt(id));
     const averageSession = new AverageSession(userById);
 
     return averageSession;
   }
 }
+
+useAverageSession.propTypes = {
+  id: PropTypes.string,
+};

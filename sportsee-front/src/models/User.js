@@ -16,6 +16,11 @@ export class User {
     return todayScore;
   }
 
+  get nutrients() {
+    let nutrients = this._keyData;
+    return nutrients;
+  }
+
   get calorieCount() {
     let calorieCount = this._keyData.calorieCount;
     return calorieCount;

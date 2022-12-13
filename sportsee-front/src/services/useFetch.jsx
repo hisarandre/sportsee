@@ -1,4 +1,13 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+
+/**
+ * Fetch data from an url
+ * and return the resolved promise or a console log (error/loading)
+ *
+ * @param { String } url
+ * @return { Object }
+ */
 
 export function useFetch(url) {
   const [data, setData] = useState({});
@@ -26,5 +35,13 @@ export function useFetch(url) {
     fetchData();
   }, [url]);
 
-  return { data, isLoading, error };
+  if (error) return console.log("there is an error");
+  if (isLoading) return console.log("It's loading");
+  if (!error && !isLoading && data) {
+    return data;
+  }
 }
+
+useFetch.propTypes = {
+  url: PropTypes.string,
+};

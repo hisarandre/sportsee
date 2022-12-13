@@ -1,14 +1,24 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import useActivity from "../services/useActivity";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
-function Barchart({ sessions }) {
+/**
+ * Return the user activity in a barchart
+ * @returns {React.ReactElement} A component
+ */
+
+function Barchart() {
+  const { id } = useParams();
+  let activity = useActivity(id);
+
   const data = [];
 
-  for (var day = 0; day < sessions.length; day++) {
+  for (var day = 0; day < activity?.sessions.length; day++) {
     data.push({
       day: day + 1,
-      kilogram: sessions[day].kilogram,
-      calories: sessions[day].calories,
+      kilogram: activity?.sessions[day].kilogram,
+      calories: activity?.sessions[day].calories,
     });
   }
 

@@ -1,6 +1,17 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import { useUser } from "../services/useUser";
 
-function WelcomeBanner({ firstName }) {
+/**
+ * Return a div with a welcome message and the name of the user
+ * @returns {React.ReactElement} A component
+ */
+
+function WelcomeBanner() {
+  const { id } = useParams();
+  let user = useUser(id);
+  let firstName = user ? user.firstName : "inconnu";
+
   return (
     <header className="welcome">
       <h1>

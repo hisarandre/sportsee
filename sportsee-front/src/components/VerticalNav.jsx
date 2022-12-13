@@ -4,6 +4,11 @@ import Icon2 from "../assets/menu_icon_2.svg";
 import Icon3 from "../assets/menu_icon_3.svg";
 import Icon4 from "../assets/menu_icon_4.svg";
 
+/**
+ * Return a div with the vertical navigation
+ * @returns {React.ReactElement} A component
+ */
+
 function VerticalNav() {
   return (
     <nav className="verticalNav">
