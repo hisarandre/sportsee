@@ -73,3 +73,6 @@ yarn doc
 ## N.B:
 
 SportSee API only contains data for users with id 12 and 18.
+
+- http://localhost:3001/user/18
+- http://localhost:3001/user/12
