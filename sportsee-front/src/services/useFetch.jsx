@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import { Navigate } from "react-router-dom";
 
 /**
  * Fetch data from an url
@@ -35,13 +35,9 @@ export function useFetch(url) {
     fetchData();
   }, [url]);
 
-  if (error) return console.log("there is an error");
+  if (error) return <Navigate to="/404"></Navigate>;
   if (isLoading) return console.log("It's loading");
   if (!error && !isLoading && data) {
     return data;
   }
 }
-
-useFetch.propTypes = {
-  url: PropTypes.string,
-};

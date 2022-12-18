@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import PropTypes from "prop-types";
 import { useFetch } from "./useFetch";
 import { Activity } from "../models/Activity";
 import { ApiContext } from "./ApiProvider";
@@ -18,8 +17,8 @@ import { ApiContext } from "./ApiProvider";
  */
 
 function useActivity(id) {
-  const { ApiData } = useContext(ApiContext);
-  const url = ApiData === "api" ? `http://localhost:3000/user/${id}/activity` : "../data/mockedActivity.json";
+  const { ApiData, urlApi } = useContext(ApiContext);
+  const url = ApiData === "api" ? `${urlApi}/user/${id}/activity` : "../data/mockedActivity.json";
   const data = useFetch(url);
 
   if (data) {
@@ -31,7 +30,3 @@ function useActivity(id) {
 }
 
 export default useActivity;
-
-useActivity.propTypes = {
-  id: PropTypes.string,
-};

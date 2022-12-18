@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import PropTypes from "prop-types";
 import { useFetch } from "./useFetch";
 import { AverageSession } from "../models/AverageSession";
 import { ApiContext } from "./ApiProvider";
@@ -17,8 +16,8 @@ import { ApiContext } from "./ApiProvider";
  */
 
 export function useAverageSession(id) {
-  const { ApiData } = useContext(ApiContext);
-  const url = ApiData === "api" ? `http://localhost:3000/user/${id}/average-sessions` : "../data/mockedSession.json";
+  const { ApiData, urlApi } = useContext(ApiContext);
+  const url = ApiData === "api" ? `${urlApi}/user/${id}/average-sessions` : "../data/mockedSession.json";
   const data = useFetch(url);
 
   if (data) {
@@ -28,7 +27,3 @@ export function useAverageSession(id) {
     return averageSession;
   }
 }
-
-useAverageSession.propTypes = {
-  id: PropTypes.string,
-};

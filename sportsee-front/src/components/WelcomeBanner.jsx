@@ -10,6 +10,7 @@ import { useUser } from "../services/useUser";
 function WelcomeBanner() {
   const { id } = useParams();
   let user = useUser(id);
+
   let firstName = user ? user.firstName : "inconnu";
 
   return (

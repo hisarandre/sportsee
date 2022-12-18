@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import PropTypes from "prop-types";
 import { useFetch } from "./useFetch";
 import { User } from "../models/User";
 import { ApiContext } from "./ApiProvider";
@@ -22,8 +21,8 @@ import { ApiContext } from "./ApiProvider";
  * @param { string } user.userInfo.lastName
  */
 export function useUser(id) {
-  const { ApiData } = useContext(ApiContext);
-  const url = ApiData === "api" ? `http://localhost:3000/user/${id}` : "../data/mockedUser.json";
+  const { ApiData, urlApi } = useContext(ApiContext);
+  const url = ApiData === "api" ? `${urlApi}/user/${id}` : "../data/mockedUser.json";
   const data = useFetch(url);
 
   if (data) {
@@ -33,7 +32,3 @@ export function useUser(id) {
     return user;
   }
 }
-
-useUser.propTypes = {
-  id: PropTypes.string,
-};

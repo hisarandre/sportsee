@@ -9,13 +9,14 @@ export const ApiContext = createContext();
  */
 
 const ApiProvider = ({ children }) => {
+  const urlApi = "http://localhost:3000";
   const [ApiData, setApiData] = useState("mock");
 
   const toggleApi = () => {
     setApiData(ApiData === "api" ? "mock" : "api");
   };
 
-  return <ApiContext.Provider value={{ ApiData, toggleApi }}>{children}</ApiContext.Provider>;
+  return <ApiContext.Provider value={{ ApiData, toggleApi, urlApi }}>{children}</ApiContext.Provider>;
 };
 
 export default ApiProvider;

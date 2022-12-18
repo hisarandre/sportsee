@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import PropTypes from "prop-types";
 import { useFetch } from "./useFetch";
 import { Performance } from "../models/Performance";
 import { ApiContext } from "./ApiProvider";
@@ -18,8 +17,8 @@ import { ApiContext } from "./ApiProvider";
  */
 
 export function usePerformance(id) {
-  const { ApiData } = useContext(ApiContext);
-  const url = ApiData === "api" ? `http://localhost:3000/user/${id}/performance` : "../data/mockedPerformance.json";
+  const { ApiData, urlApi } = useContext(ApiContext);
+  const url = ApiData === "api" ? `${urlApi}/user/${id}/performance` : "../data/mockedPerformance.json";
   const data = useFetch(url);
 
   if (data) {
@@ -29,7 +28,3 @@ export function usePerformance(id) {
     return performance;
   }
 }
-
-usePerformance.propTypes = {
-  id: PropTypes.string,
-};
